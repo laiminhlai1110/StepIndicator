@@ -39,7 +39,7 @@ class AnnularLayer: CAShapeLayer {
         }
     }
     
-    var showFlag: Bool = true {
+    var showFlag: Bool = false {
         didSet {
             if !showFlag {
                 self.flagLayer.contents = nil
