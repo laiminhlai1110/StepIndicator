@@ -92,6 +92,7 @@ class AnnularLayer: CAShapeLayer {
     // MARK: - Functions
     func updateStatus() {
         if isFinished {
+            print("Access here")
             self.path = nil
             // draw circle empty
             self.drawAnnularPath()
