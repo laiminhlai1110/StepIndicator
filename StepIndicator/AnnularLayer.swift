@@ -26,7 +26,7 @@ class AnnularLayer: CAShapeLayer {
     var displayNumber = false
     var step:Int = 0
     var annularDefaultColor: UIColor?
-    
+    var fontSize: UIFont?
     var isCurrent:Bool = false {
         didSet{
             self.updateStatus()
@@ -47,6 +47,12 @@ class AnnularLayer: CAShapeLayer {
             else{
                 self.flagLayer.contents = AnnularLayer.flagCGImage
             }
+        }
+    }
+    
+    var setFontSize: UIFont = .systemFont(ofSize: 13) {
+        didSet {
+            centerTextLayer.font = fontSize!
         }
     }
     
@@ -87,7 +93,13 @@ class AnnularLayer: CAShapeLayer {
     func updateStatus() {
         if isFinished {
             self.path = nil
-            self.drawFullCircleAnimated()
+            // draw circle empty
+            self.drawAnnularPath()
+            self.strokeColor = self.tintColor?.cgColor
+            self.drawText()
+            
+//           self.drawFullCircleAnimated()
+
         }
         else{
             fullCircleLayer.removeFromSuperlayer()
@@ -119,6 +131,7 @@ class AnnularLayer: CAShapeLayer {
             }
         }
     }
+    
     
     private func drawAnnularPath() {
         let sideLength = fmin(self.frame.width, self.frame.height)
@@ -159,9 +172,18 @@ class AnnularLayer: CAShapeLayer {
         self.centerTextLayer.contentsScale = UIScreen.main.scale
         self.centerTextLayer.foregroundColor = self.strokeColor
         self.centerTextLayer.alignmentMode = CATextLayerAlignmentMode.center
-        let fontSize = sideLength * 0.65
-        self.centerTextLayer.font = UIFont.boldSystemFont(ofSize: fontSize) as CFTypeRef
-        self.centerTextLayer.fontSize = fontSize
+                
+        self.centerTextLayer.font = UIFont(name: "NotoSans-Regular", size: 12)
+        self.centerTextLayer.fontSize = 12
+        
+//        if let fontSize = fontSize {
+//            self.centerTextLayer.font = fontSize
+//        }else {
+//            let fontSize = sideLength * 0.65
+//            self.centerTextLayer.font = UIFont.systemFont(ofSize: 12)
+//            self.centerTextLayer.fontSize = fontSize
+//        }
+        
         
         self.addSublayer(self.centerTextLayer)
     }

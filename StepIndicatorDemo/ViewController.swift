@@ -13,6 +13,9 @@ class ViewController: UIViewController,UIScrollViewDelegate {
     @IBOutlet weak var stepIndicatorView:StepIndicatorView!
     @IBOutlet weak var scrollView:UIScrollView!
     
+    let indicatorView = StepIndicatorView()
+
+    
     private var isScrollViewInitialized = false
     
     override func viewDidLoad() {
@@ -21,31 +24,57 @@ class ViewController: UIViewController,UIScrollViewDelegate {
         // In this demo, the customizations have been done in Storyboard.
         
         // Customization by coding:
-        //self.stepIndicatorView.numberOfSteps = 5
-        //self.stepIndicatorView.currentStep = 0
-        //self.stepIndicatorView.circleColor = UIColor(red: 179.0/255.0, green: 189.0/255.0, blue: 194.0/255.0, alpha: 1.0)
-        //self.stepIndicatorView.circleTintColor = UIColor(red: 0.0/255.0, green: 180.0/255.0, blue: 124.0/255.0, alpha: 1.0)
-        //self.stepIndicatorView.circleStrokeWidth = 3.0
-        //self.stepIndicatorView.circleRadius = 10.0
-        //self.stepIndicatorView.lineColor = self.stepIndicatorView.circleColor
-        //self.stepIndicatorView.lineTintColor = self.stepIndicatorView.circleTintColor
-        //self.stepIndicatorView.lineMargin = 4.0
-        //self.stepIndicatorView.lineStrokeWidth = 2.0
-        //self.stepIndicatorView.displayNumbers = false //indicates if it displays numbers at the center instead of the core circle
-        //self.stepIndicatorView.direction = .leftToRight
-        //self.stepIndicatorView.showFlag = true
+//        self.stepIndicatorView.numberOfSteps = 5
+//        self.stepIndicatorView.currentStep = 1
+//        self.stepIndicatorView.circleColor = UIColor(red: 179.0/255.0, green: 189.0/255.0, blue: 194.0/255.0, alpha: 1.0)
+//        self.stepIndicatorView.circleTintColor = UIColor(red: 0.0/255.0, green: 180.0/255.0, blue: 124.0/255.0, alpha: 1.0)
+//        self.stepIndicatorView.circleStrokeWidth = 1.0
+//        self.stepIndicatorView.circleRadius = 8.0
+//        self.stepIndicatorView.lineColor = self.stepIndicatorView.circleColor
+//        self.stepIndicatorView.lineTintColor = self.stepIndicatorView.circleTintColor
+//        self.stepIndicatorView.lineMargin = 0
+//        self.stepIndicatorView.lineStrokeWidth = 1.0
+//        self.stepIndicatorView.displayNumbers = true //indicates if it displays numbers at the center instead of the core circle
+//        self.stepIndicatorView.direction = .leftToRight
+//        self.stepIndicatorView.showFlag = false
 
         // Example for apply constraints programmatically, enable it for test.
         //self.applyNewConstraints()
+        
+        self.indicatorView.frame = CGRect(x: 50, y: 150, width: 280, height: 100)
+        self.view.addSubview(self.indicatorView)
+        
+        self.indicatorView.numberOfSteps = 5
+        self.indicatorView.currentStep = 1
+        
+        self.indicatorView.circleColor = UIColor(red: 179.0/255.0, green: 189.0/255.0, blue: 194.0/255.0, alpha: 1.0)
+        self.indicatorView.circleTintColor = UIColor(red: 0.0/255.0, green: 180.0/255.0, blue: 124.0/255.0, alpha: 1.0)
+        self.indicatorView.circleStrokeWidth = 1.0
+        self.indicatorView.circleRadius = 10.0
+        self.indicatorView.lineColor = self.stepIndicatorView.circleColor
+        self.indicatorView.lineTintColor = self.stepIndicatorView.circleTintColor
+        self.indicatorView.lineMargin = 0
+        self.indicatorView.lineStrokeWidth = 1.0
+        self.indicatorView.displayNumbers = true //indicates if it displays numbers at the center instead of the core circle
+        self.indicatorView.direction = .leftToRight //four directions
+        self.indicatorView.showFlag = false
+        
+        for family in UIFont.familyNames {
+            print("\(family)")
+
+            for name in UIFont.fontNames(forFamilyName: family) {
+                print("   \(name)")
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !isScrollViewInitialized {
-            isScrollViewInitialized = true
-            self.initScrollView()
-        }
+//        if !isScrollViewInitialized {
+//            isScrollViewInitialized = true
+//            self.initScrollView()
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,6 +131,7 @@ class ViewController: UIViewController,UIScrollViewDelegate {
         stepIndicatorView.heightAnchor.constraint(equalToConstant: 80.0).isActive = true
         stepIndicatorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         stepIndicatorView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant:30.0).isActive = true
+        
     
         self.scrollView.topAnchor.constraint(equalTo: stepIndicatorView.bottomAnchor, constant: 8.0).isActive = true
     }
