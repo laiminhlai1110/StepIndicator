@@ -50,7 +50,7 @@ class ViewController: UIViewController,UIScrollViewDelegate {
         self.indicatorView.circleColor = UIColor(red: 179.0/255.0, green: 189.0/255.0, blue: 194.0/255.0, alpha: 1.0)
         self.indicatorView.circleTintColor = UIColor(red: 0.0/255.0, green: 180.0/255.0, blue: 124.0/255.0, alpha: 1.0)
         self.indicatorView.circleStrokeWidth = 1.0
-        self.indicatorView.circleRadius = 10.0
+        self.indicatorView.circleRadius = 9.0
         self.indicatorView.lineColor = self.stepIndicatorView.circleColor
         self.indicatorView.lineTintColor = self.stepIndicatorView.circleTintColor
         self.indicatorView.lineMargin = 0

@@ -169,7 +169,7 @@ class AnnularLayer: CAShapeLayer {
         
         self.centerTextLayer.string = "\(self.step)"
         self.centerTextLayer.frame = self.bounds
-        self.centerTextLayer.position = CGPoint(x: self.bounds.midX, y: self.bounds.midY * 1.2)
+        self.centerTextLayer.position = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         self.centerTextLayer.contentsScale = UIScreen.main.scale
         self.centerTextLayer.foregroundColor = self.strokeColor
         self.centerTextLayer.alignmentMode = CATextLayerAlignmentMode.center
