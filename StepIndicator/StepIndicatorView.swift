@@ -126,7 +126,7 @@ public class StepIndicatorView: UIView {
         }
     }
     
-    @IBInspectable var showFlag: Bool = true {
+    @IBInspectable var showFlag: Bool = false {
         didSet {
             self.updateSubLayers()
         }

@@ -57,7 +57,7 @@ class ViewController: UIViewController,UIScrollViewDelegate {
         self.indicatorView.lineStrokeWidth = 1.0
         self.indicatorView.displayNumbers = true //indicates if it displays numbers at the center instead of the core circle
         self.indicatorView.direction = .leftToRight //four directions
-        self.indicatorView.showFlag = false
+//        self.indicatorView.showFlag = false
         
         for family in UIFont.familyNames {
             print("\(family)")
